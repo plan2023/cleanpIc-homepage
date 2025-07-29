@@ -4,72 +4,106 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CleanPic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      font-family: sans-serif;
-      background: #f2f2f2;
+      font-family: 'Inter', 'Roboto', sans-serif;
+      background: #f9fafb;
+      color: #333;
       text-align: center;
     }
     header {
-      background-color: #4caf50;
+      background: linear-gradient(135deg, #4caf50, #2e7d32);
       color: white;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem 2rem;
     }
     header img {
-      width: 120px;
+      width: 100px;
       margin-bottom: 1rem;
     }
     h1 {
-      margin: 0;
-      font-size: 2.5rem;
+      font-size: 2.75rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
     }
     p {
       font-size: 1.2rem;
-      margin: 1rem 0;
+      opacity: 0.95;
+    }
+    .market-links img {
+      height: 48px;
+      margin: 0 12px;
+      transition: transform 0.2s ease;
+    }
+    .market-links img:hover {
+      transform: scale(1.05);
     }
     .lang-buttons {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
     .lang-buttons button {
-      margin: 0 5px;
-      padding: 0.5rem 1rem;
+      margin: 0 6px;
+      padding: 0.5rem 1.1rem;
       font-size: 1rem;
+      border: none;
+      border-radius: 20px;
+      background-color: white;
+      color: #4caf50;
+      font-weight: 600;
       cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+    }
+    .lang-buttons button:hover {
+      background-color: #e8f5e9;
     }
     .content {
-      padding: 2rem;
+      padding: 3rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
     .screenshots {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.5rem;
       margin-top: 2rem;
     }
     .screenshots img {
       width: 200px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+    .screenshots img:hover {
+      transform: translateY(-6px);
     }
     footer {
-      margin-top: 3rem;
-      padding: 2rem 1rem;
-      background-color: #e0e0e0;
+      margin-top: 4rem;
+      padding: 2.5rem 1rem;
+      background-color: #eeeeee;
       font-size: 0.95rem;
     }
     footer a {
-      margin: 0 0.5rem;
+      color: #2e7d32;
       text-decoration: none;
-      color: #00796b;
+      margin: 0 0.4rem;
     }
     footer a:hover {
       text-decoration: underline;
     }
     .footer-title {
-      font-weight: bold;
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
+      font-weight: 600;
+      margin-top: 1.2rem;
+      margin-bottom: 0.7rem;
     }
   </style>
 </head>
@@ -79,12 +113,12 @@
     <h1 id="title">CleanPic - Smart Photo Organizer</h1>
     <p id="subtitle">Automatically sort and clean your photo gallery with AI.</p>
 
-    <div class="market-links" style="margin-top: 1rem;">
+    <div class="market-links" style="margin-top: 1.2rem;">
       <a href="https://apps.apple.com/app/id0000000000" target="_blank">
-        <img src="images/apple.png" alt="Download on the App Store" style="height: 50px; margin: 0 10px;">
+        <img src="images/apple.png" alt="Download on the App Store">
       </a>
       <a href="https://play.google.com/store/apps/details?id=com.example.cleanpic" target="_blank">
-        <img src="images/google.png" alt="Get it on Google Play" style="height: 50px; margin: 0 10px;">
+        <img src="images/google.png" alt="Get it on Google Play">
       </a>
     </div>
 
