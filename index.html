@@ -1,13 +1,130 @@
-<!-- cleanpic-homepage/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CleanPic</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f2f2f2;
+      text-align: center;
+    }
+    header {
+      background-color: #4caf50;
+      color: white;
+      padding: 2rem 1rem;
+    }
+    header img {
+      width: 120px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    p {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+    .lang-buttons {
+      margin-top: 1rem;
+    }
+    .lang-buttons button {
+      margin: 0 5px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .content {
+      padding: 2rem;
+    }
+    .screenshots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .screenshots img {
+      width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to CleanPic</h1>
-  <p>AI-powered photo cleanup app.</p>
+  <header>
+    <img src="images/web_logo.png" alt="CleanPic Logo">
+    <h1 id="title">CleanPic - Smart Photo Organizer</h1>
+    <p id="subtitle">Automatically sort and clean your photo gallery with AI.</p>
+    <div class="lang-buttons">
+      <button onclick="setLang('en')">English</button>
+      <button onclick="setLang('ko')">한국어</button>
+      <button onclick="setLang('ja')">日本語</button>
+      <button onclick="setLang('zh_CN')">中文(简)</button>
+      <button onclick="setLang('zh_TW')">中文(繁)</button>
+    </div>
+  </header>
+
+  <div class="content">
+    <h2 id="featureTitle">Key Features</h2>
+    <p id="featureDesc">Detects similar photos, blurry shots, and helps you clean your gallery efficiently.</p>
+
+    <div class="screenshots">
+      <img src="images/01.png" alt="Screenshot 01">
+      <img src="images/02.png" alt="Screenshot 02">
+      <img src="images/03.png" alt="Screenshot 03">
+      <img src="images/04.png" alt="Screenshot 04">
+      <img src="images/05.png" alt="Screenshot 05">
+      <img src="images/06.png" alt="Screenshot 06">
+      <img src="images/07.png" alt="Screenshot 07">
+      <img src="images/08.png" alt="Screenshot 08">
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        title: "CleanPic - Smart Photo Organizer",
+        subtitle: "Automatically sort and clean your photo gallery with AI.",
+        featureTitle: "Key Features",
+        featureDesc: "Detects similar photos, blurry shots, and helps you clean your gallery efficiently."
+      },
+      ko: {
+        title: "CleanPic - AI 사진 정리 앱",
+        subtitle: "AI를 통해 가능성 높게 사진차 검증과 정리가 가능해지는 앱",
+        featureTitle: "기능 소개",
+        featureDesc: "유사사진, 화염 사진 검증, 가장 좋은 사진만 남겨드린다."
+      },
+      ja: {
+        title: "CleanPic - AIフォトギャラリー治理アプリ",
+        subtitle: "AIで写真ギャラリーを自動判断・整理",
+        featureTitle: "主な機能",
+        featureDesc: "似た写真やぶれた写真を検出して精平します"
+      },
+      zh_CN: {
+        title: "CleanPic - AI照片整理应用",
+        subtitle: "利用AI自动分类和结构图片精选集",
+        featureTitle: "主要功能",
+        featureDesc: "检测相似图片和虚化照片，效率精选图片"
+      },
+      zh_TW: {
+        title: "CleanPic - AI照片整理應用",
+        subtitle: "利用AI自動分類和結構圖片精選集",
+        featureTitle: "主要功能",
+        featureDesc: "偵測相似照片和虛化照片，有效精選"
+      }
+    };
+
+    function setLang(lang) {
+      const t = translations[lang];
+      document.getElementById('title').innerText = t.title;
+      document.getElementById('subtitle').innerText = t.subtitle;
+      document.getElementById('featureTitle').innerText = t.featureTitle;
+      document.getElementById('featureDesc').innerText = t.featureDesc;
+    }
+  </script>
 </body>
 </html>
