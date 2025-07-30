@@ -115,7 +115,7 @@
 
     <div style="display: flex; gap: 20px;">
       <!-- App Store 버튼 -->
-      <div style="width: 200px; height: 100px; overflow: hidden;">
+      <div onclick="showAlert()" style="width: 200px; height: 100px; overflow: hidden; cursor: pointer;">
         <img src="images/apple.png" alt="App Store" style="width: 100%; height: auto; object-fit: contain;">
       </div>
     
@@ -171,6 +171,13 @@
   </footer>
 
   <script>
+    const messages = {
+      ko: "앱스토어는 준비 중입니다.",
+      en: "App Store version is coming soon.",
+      ja: "App Storeのバージョンは準備中です。",
+      zh: "App Store 版本即将上线。",
+    };
+    
     const translations = {
       en: {
         title: "CleanPic – AI Photo Organizer",
@@ -203,6 +210,12 @@
         featureDesc: "偵測相似與模糊照片，有效協助整理相簿。"
       }
     };
+
+    function showAlert() {
+      const lang = navigator.language || navigator.userLanguage; // ex: 'ko-KR'
+      const shortLang = lang.split('-')[0]; // ex: 'ko'
+      alert(messages[shortLang] || messages.en);
+    }
 
     function setLang(lang) {
       const t = translations[lang];
