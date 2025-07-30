@@ -173,59 +173,82 @@
   </footer>
 
   <script>
-    const messages = {
-      ko: "앱스토어는 준비 중입니다.",
-      en: "App Store version is coming soon.",
-      ja: "App Storeのバージョンは準備中です。",
-      zh: "App Store 版本即将上线。",
-    };
-    
-    const translations = {
-      en: {
-        title: "CleanPic – AI Photo Organizer",
-        subtitle: "Automatically sort and clean your photo gallery with AI.",
-        featureTitle: "Key Features",
-        featureDesc: "Detects similar photos, blurry shots, and helps you clean your gallery efficiently."
-      },
-      ko: {
-        title: "CleanPic - AI 사진 정리 앱",
-        subtitle: "AI로 사진 갤러리를 자동 분석하고 정리합니다.",
-        featureTitle: "기능 소개",
-        featureDesc: "유사 사진, 흐린 사진을 감지하고 정리 도우미 기능을 제공합니다."
-      },
-      ja: {
-        title: "CleanPic - AIフォトギャラリー整理アプリ",
-        subtitle: "AIで写真ギャラリーを自動分析・整理",
-        featureTitle: "主な機能",
-        featureDesc: "類似写真やぼやけた写真を検出して効率的に整理します。"
-      },
-      zh_CN: {
-        title: "CleanPic - AI照片整理应用",
-        subtitle: "使用AI自动分析并整理您的相册。",
-        featureTitle: "主要功能",
-        featureDesc: "检测相似照片和模糊照片，帮助您高效清理图库。"
-      },
-      zh_TW: {
-        title: "CleanPic - AI照片整理應用",
-        subtitle: "使用AI自動分析並整理您的相簿。",
-        featureTitle: "主要功能",
-        featureDesc: "偵測相似與模糊照片，有效協助整理相簿。"
-      }
+  const messages = {
+    ko: "앱스토어는 준비 중입니다.",
+    en: "App Store version is coming soon.",
+    ja: "App Storeのバージョンは準備中です。",
+    zh: "App Store 版本即将上线。",
+  };
+
+  const translations = {
+    en: {
+      title: "CleanPic – AI Photo Organizer",
+      subtitle: "Automatically sort and clean your photo gallery with AI.",
+      featureTitle: "Key Features",
+      featureDesc: "Detects similar photos, blurry shots, and helps you clean your gallery efficiently."
+    },
+    ko: {
+      title: "CleanPic - AI 사진 정리 앱",
+      subtitle: "AI로 사진 갤러리를 자동 분석하고 정리합니다.",
+      featureTitle: "기능 소개",
+      featureDesc: "유사 사진, 흐린 사진을 감지하고 정리 도우미 기능을 제공합니다."
+    },
+    ja: {
+      title: "CleanPic - AIフォトギャラリー整理アプリ",
+      subtitle: "AIで写真ギャラリーを自動分析・整理",
+      featureTitle: "主な機能",
+      featureDesc: "類似写真やぼやけた写真を検出して効率的に整理します。"
+    },
+    zh_CN: {
+      title: "CleanPic - AI照片整理应用",
+      subtitle: "使用AI自动分析并整理您的相册。",
+      featureTitle: "主要功能",
+      featureDesc: "检测相似照片和模糊照片，帮助您高效清理图库。"
+    },
+    zh_TW: {
+      title: "CleanPic - AI照片整理應用",
+      subtitle: "使用AI自動分析並整理您的相簿。",
+      featureTitle: "主要功能",
+      featureDesc: "偵測相似與模糊照片，有效協助整理相簿。"
+    }
+  };
+
+  // ✅ 선택된 언어 상태 저장
+  let currentLang = 'en'; // 기본값
+
+  function showAlert() {
+    const alertMessages = {
+      en: messages.en,
+      ko: messages.ko,
+      ja: messages.ja,
+      zh: messages.zh, // zh-CN / zh-TW 구분 불가할 경우 zh로 처리
     };
 
-    function showAlert() {
-      const lang = navigator.language || navigator.userLanguage; // ex: 'ko-KR'
-      const shortLang = lang.split('-')[0]; // ex: 'ko'
-      alert(messages[shortLang] || messages.en);
-    }
+    const msg = alertMessages[currentLang] || messages.en;
+    alert(msg);
+  }
 
-    function setLang(lang) {
-      const t = translations[lang];
-      document.getElementById('title').innerText = t.title;
-      document.getElementById('subtitle').innerText = t.subtitle;
-      document.getElementById('featureTitle').innerText = t.featureTitle;
-      document.getElementById('featureDesc').innerText = t.featureDesc;
-    }
-  </script>
+  function setLang(lang) {
+    currentLang = lang;
+
+    const t = translations[lang];
+    if (!t) return;
+
+    document.getElementById('title').innerText = t.title;
+    document.getElementById('subtitle').innerText = t.subtitle;
+    document.getElementById('featureTitle').innerText = t.featureTitle;
+    document.getElementById('featureDesc').innerText = t.featureDesc;
+  }
+
+  // ✅ 브라우저 언어로 자동 설정 (초기 진입 시)
+  window.addEventListener('DOMContentLoaded', () => {
+    const lang = navigator.language.toLowerCase(); // ex: 'zh-cn'
+    if (lang.startsWith('ko')) setLang('ko');
+    else if (lang.startsWith('ja')) setLang('ja');
+    else if (lang.startsWith('zh-tw')) setLang('zh_TW');
+    else if (lang.startsWith('zh')) setLang('zh_CN');
+    else setLang('en');
+  });
+</script>
 </body>
 </html>
